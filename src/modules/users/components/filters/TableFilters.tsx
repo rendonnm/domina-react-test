@@ -15,8 +15,10 @@ export function TableFilters({
 }: TableFiltersProps) {
   return (
     <section className="flex gap-5 flex-wrap justify-between">
-      <label htmlFor="user-search" className="sr-only">
-        Buscar por nombre de usuario
+      <div>
+        <label htmlFor="user-search" className="sr-only">
+          Buscar por nombre de usuario
+        </label>
         <input
           type="text"
           name="user-search"
@@ -26,9 +28,11 @@ export function TableFilters({
           value={searchInput}
           onChange={(e) => handleUserSearch(e.target.value)}
         />
-      </label>
-      <label htmlFor="user-limit" className="sr-only">
-        Cantidad de registros por página
+      </div>
+      <div>
+        <label htmlFor="user-limit" className="sr-only">
+          Cantidad de registros por página
+        </label>
         <select
           name="user-limit"
           id="user-limit"
@@ -42,7 +46,7 @@ export function TableFilters({
             </option>
           ))}
         </select>
-      </label>
+      </div>
     </section>
   );
 }
