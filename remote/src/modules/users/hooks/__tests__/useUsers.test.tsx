@@ -1,7 +1,7 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
 import { renderHook, waitFor } from "@testing-library/react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter } from "react-router";
+import { BrowserRouter } from "react-router-dom";
 import { useUsers } from "@/modules/users/hooks/useUsers";
 import { getUsers } from "@/modules/users/services/getUsers";
 import { mockUsersResponse } from "@/modules/users/__mocks__/users";

@@ -1,7 +1,12 @@
 import { describe, it, expect, vi } from "vitest";
 import { render, screen } from "@testing-library/react";
+import { BrowserRouter } from "react-router-dom";
 import { UsersTable } from "@/modules/users/components/table/UsersTable";
 import { mockUsers } from "@/modules/users/__mocks__/users";
+
+function renderWithRouter(component: React.ReactElement) {
+  return render(<BrowserRouter>{component}</BrowserRouter>);
+}
 
 describe("UsersTable", () => {
   const defaultProps = {
@@ -22,7 +27,7 @@ describe("UsersTable", () => {
   };
 
   it("renders table with user data", () => {
-    render(<UsersTable {...defaultProps} />);
+    renderWithRouter(<UsersTable {...defaultProps} />);
 
     expect(screen.getByText("Nombre de usuario")).toBeDefined();
     expect(screen.getByText("Teléfono")).toBeDefined();
@@ -36,13 +41,17 @@ describe("UsersTable", () => {
   });
 
   it("shows loading message when isLoading is true", () => {
-    render(<UsersTable {...defaultProps} isLoading={true} users={[]} />);
+    renderWithRouter(
+      <UsersTable {...defaultProps} isLoading={true} users={[]} />
+    );
 
     expect(screen.getByText("Cargando usuarios...")).toBeDefined();
   });
 
   it("shows error message when isError is true", () => {
-    render(<UsersTable {...defaultProps} isError={true} users={[]} />);
+    renderWithRouter(
+      <UsersTable {...defaultProps} isError={true} users={[]} />
+    );
 
     expect(
       screen.getByText(
@@ -52,7 +61,7 @@ describe("UsersTable", () => {
   });
 
   it("shows message when there are no users", () => {
-    render(<UsersTable {...defaultProps} users={[]} />);
+    renderWithRouter(<UsersTable {...defaultProps} users={[]} />);
 
     expect(screen.getByText("No se encontraron usuarios.")).toBeDefined();
   });

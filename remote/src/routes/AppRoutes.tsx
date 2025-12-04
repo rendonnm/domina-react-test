@@ -1,7 +1,6 @@
-import { Routes, Route } from "react-router";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Layout } from "@/layout/Layout";
 import { UsersMainPage } from "@/modules/users/pages/UsersMainPage";
-import { BrowserRouter } from "react-router";
 
 export function AppRoutes() {
   return (

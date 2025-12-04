@@ -54,3 +54,5 @@ export function UsersMainPage() {
     </section>
   );
 }
+
+export default UsersMainPage;

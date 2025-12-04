@@ -1,10 +1,10 @@
-import { Outlet } from "react-router";
+import { Outlet } from "react-router-dom";
 
 export function Layout() {
   return (
     <>
       <div className="h-screen w-screen grid grid-rows-[auto_1fr_auto] overflow-hidden">
-        <header className="bg-[#1722ff] h-18 p-4">
+        <header className="bg-[#1722ff] h-18 p-4 text-white flex items-center justify-between">
           <h1 className="leading-none">
             <a
               href="https://domina.com.co/"
@@ -20,6 +20,9 @@ export function Layout() {
               <span className="sr-only">Domina Entrega Total S.A.S.</span>
             </a>
           </h1>
+          <h2 className="text-3xl font-bold ">
+            Espacio aislado - Micro Frontend
+          </h2>
         </header>
         <main className="p-10 overflow-auto">
           <Outlet />

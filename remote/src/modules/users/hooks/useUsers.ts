@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { getUsers } from "@/modules/users/services/getUsers";
 import { useEffect, useState } from "react";
-import { useSearchParams } from "react-router";
+import { useSearchParams } from "react-router-dom";
 
 export function useUsers() {
   const [searchParams, setSearchParams] = useSearchParams();
