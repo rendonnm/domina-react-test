@@ -39,5 +39,18 @@ export function UserTableContent({
     );
   }
 
+  if (users.length === 0) {
+    return (
+      <tr>
+        <td
+          colSpan={USER_COLUMNS.length}
+          className="py-6 px-3 text-center text-sm text-gray-500"
+        >
+          No se encontraron usuarios.
+        </td>
+      </tr>
+    );
+  }
+
   return users.map((user) => <UserRow key={user.id} user={user} />);
 }
