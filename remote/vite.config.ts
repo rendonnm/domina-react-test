@@ -4,6 +4,7 @@ import tailwindcss from "@tailwindcss/vite";
 import path from "path";
 import { fileURLToPath } from "url";
 import { federation } from "@module-federation/vite";
+import cssInjectedByJsPlugin from "vite-plugin-css-injected-by-js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -13,6 +14,10 @@ export default defineConfig(({ mode }) => ({
   plugins: [
     react(),
     tailwindcss(),
+    cssInjectedByJsPlugin({
+      jsAssetsFilterFunction: (outputChunk) =>
+        outputChunk.fileName === "remoteEntry.js",
+    }),
     federation({
       name: "remote",
       filename: "remoteEntry.js",
