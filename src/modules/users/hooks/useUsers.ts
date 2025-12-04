@@ -2,7 +2,6 @@ import { useQuery } from "@tanstack/react-query";
 import { getUsers } from "@/modules/users/services/getUsers";
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router";
-import type { UsersReponse } from "@/modules/users/types/users";
 
 export function useUsers() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -17,7 +16,7 @@ export function useUsers() {
     setSearchInput(search);
   }, [search]);
 
-  const { data, isLoading, isError } = useQuery<UsersReponse>({
+  const { data, isLoading, isError } = useQuery({
     queryKey: ["domina-users", page, limit, search],
     queryFn: () => getUsers(page, limit, search),
   });

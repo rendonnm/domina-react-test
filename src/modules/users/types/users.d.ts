@@ -1,10 +1,3 @@
-export interface UsersReponse {
-  users: User[];
-  total: number;
-  skip: number;
-  limit: number;
-}
-
 export interface User {
   id: number;
   firstName: string;
@@ -90,4 +83,27 @@ export interface Crypto {
   coin: string;
   wallet: string;
   network: string;
+}
+
+export type UserTableData = Pick<
+  User,
+  | "id"
+  | "username"
+  | "firstName"
+  | "lastName"
+  | "email"
+  | "phone"
+  | "age"
+  | "image"
+  | "role"
+> & {
+  company: Pick<Company, "name" | "department" | "title">;
+  address: Pick<Address, "city" | "country">;
+};
+
+export interface UsersResponse {
+  users: UserTableData[];
+  total: number;
+  skip: number;
+  limit: number;
 }
