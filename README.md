@@ -1,3 +1,5 @@
+![alt text](public/domina-logo-light.webp)
+
 # Domina React Test
 
 Prueba técnica para **Domina ENTREGA TOTAL** - Aplicación de gestión de usuarios con React, TypeScript y TanStack Query.
@@ -10,6 +12,9 @@ Prueba técnica para **Domina ENTREGA TOTAL** - Aplicación de gestión de usuar
 - **TailwindCSS**
 - **TanStack Query**
 - **React Router**
+- **Vitest**
+- **Playwright**
+- **React Testing Library**
 - **ESLint**
 
 ## Arquitectura
@@ -50,13 +55,29 @@ npm install
 
 ## Comandos Disponibles
 
+### Desarrollo
+
 ```bash
 # Iniciar servidor de desarrollo
-npm dev
+pnpm dev
 
 # Compilar para producción
-npm build
+pnpm build
 ```
+
+### Testing
+
+```bash
+# Tests unitarios Vitest
+pnpm test:run
+
+# Tests E2E con Playwright
+pnpm test:e2e
+```
+
+### CI/CD
+
+GitHub Actions ejecuta automáticamente ambos tipos de tests en cada push o pull request.
 
 ## API
 
