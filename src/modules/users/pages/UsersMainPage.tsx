@@ -13,6 +13,7 @@ export function UsersMainPage() {
     hasNextPage,
     hasPreviousPage,
     limit,
+    searchInput,
     handlePage,
     handleLimit,
     handleUserSearch,
@@ -46,6 +47,7 @@ export function UsersMainPage() {
         isLoading={isLoading}
         isError={isError}
         limit={limit}
+        searchInput={searchInput}
         handleLimit={handleLimit}
         handleUserSearch={handleUserSearch}
       />

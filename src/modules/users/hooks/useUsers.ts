@@ -1,14 +1,21 @@
 import { useQuery } from "@tanstack/react-query";
 import { getUsers } from "@/modules/users/services/getUsers";
 import { useEffect, useState } from "react";
+import { useSearchParams } from "react-router";
 import type { UsersReponse } from "@/modules/users/types/users";
 
 export function useUsers() {
-  const [page, setPage] = useState(1);
-  const [limit, setLimit] = useState(10);
+  const [searchParams, setSearchParams] = useSearchParams();
 
-  const [search, setSearch] = useState("");
-  const [searchField, setSearchField] = useState("");
+  const page = Number(searchParams.get("page") ?? "1");
+  const limit = Number(searchParams.get("limit") ?? "10");
+  const search = searchParams.get("search") || "";
+
+  const [searchInput, setSearchInput] = useState(search);
+
+  useEffect(() => {
+    setSearchInput(search);
+  }, [search]);
 
   const { data, isLoading, isError } = useQuery<UsersReponse>({
     queryKey: ["domina-users", page, limit, search],
@@ -24,36 +31,61 @@ export function useUsers() {
   const hasPreviousPage = page > 1;
 
   function handlePage(newPage: number) {
-    setPage(newPage);
+    setSearchParams((prev) => {
+      prev.set("page", String(newPage));
+      return prev;
+    });
   }
 
   function goToNextPage() {
-    if (hasNextPage) {
-      setPage((prevPage) => prevPage + 1);
-    }
+    if (!hasNextPage) return;
+
+    setSearchParams((prev) => {
+      const currentPage = Number(prev.get("page") || "1");
+      prev.set("page", String(currentPage + 1));
+      return prev;
+    });
   }
 
   function goToPreviousPage() {
-    if (hasPreviousPage) {
-      setPage((prevPage) => prevPage - 1);
-    }
+    if (!hasPreviousPage) return;
+
+    setSearchParams((prev) => {
+      const currentPage = Number(prev.get("page") || "1");
+      prev.set("page", String(Math.max(1, currentPage - 1)));
+      return prev;
+    });
   }
 
   function handleLimit(newLimit: number) {
-    setLimit(newLimit);
-    setPage(1);
+    setSearchParams((prev) => {
+      prev.set("limit", String(newLimit));
+      prev.set("page", "1");
+      return prev;
+    });
   }
 
   function handleUserSearch(userQuery: string) {
-    setSearchField(userQuery);
+    setSearchInput(userQuery);
   }
 
   useEffect(() => {
+    if (searchInput === search) return;
+
     const timerId = setTimeout(() => {
-      setSearch(searchField);
+      setSearchParams((prev) => {
+        if (searchInput) {
+          prev.set("search", searchInput);
+        } else {
+          prev.delete("search");
+        }
+        prev.set("page", "1");
+        return prev;
+      });
     }, 400);
+
     return () => clearTimeout(timerId);
-  }, [searchField]);
+  }, [searchInput, search, setSearchParams]);
 
   return {
     users,
@@ -65,6 +97,7 @@ export function useUsers() {
     hasNextPage,
     hasPreviousPage,
     limit,
+    searchInput,
     handlePage,
     handleLimit,
     goToNextPage,

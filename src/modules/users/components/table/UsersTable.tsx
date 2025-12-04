@@ -13,6 +13,7 @@ interface UsersTableProps {
   isLoading: boolean;
   isError: boolean;
   limit: number;
+  searchInput: string;
   handlePage: (newPage: number) => void;
   handleLimit: (newLimit: number) => void;
   handleUserSearch: (userQuery: string) => void;
@@ -29,6 +30,7 @@ export function UsersTable({
   isLoading,
   isError,
   limit,
+  searchInput,
   handlePage,
   handleLimit,
   handleUserSearch,
@@ -39,6 +41,7 @@ export function UsersTable({
     <>
       <TableFilters
         limit={limit}
+        searchInput={searchInput}
         handleLimit={handleLimit}
         handleUserSearch={handleUserSearch}
       />
