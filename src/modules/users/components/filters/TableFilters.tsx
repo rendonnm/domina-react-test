@@ -15,7 +15,8 @@ export function TableFilters({
 }: TableFiltersProps) {
   return (
     <section className="flex gap-5 flex-wrap justify-between">
-      <label htmlFor="user-search">
+      <label htmlFor="user-search" className="sr-only">
+        Buscar por nombre de usuario
         <input
           type="text"
           name="user-search"
@@ -26,7 +27,8 @@ export function TableFilters({
           onChange={(e) => handleUserSearch(e.target.value)}
         />
       </label>
-      <label htmlFor="user-limit">
+      <label htmlFor="user-limit" className="sr-only">
+        Cantidad de registros por página
         <select
           name="user-limit"
           id="user-limit"
