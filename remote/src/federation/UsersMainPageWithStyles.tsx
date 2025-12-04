@@ -1,2 +1,4 @@
 import "../index.css";
-export { UsersMainPage as default } from "../modules/users/pages/UsersMainPage";
+import { UsersMainPage } from "../modules/users/pages/UsersMainPage";
+
+export default UsersMainPage;
