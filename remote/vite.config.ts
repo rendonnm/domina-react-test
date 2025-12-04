@@ -8,7 +8,8 @@ import { federation } from "@module-federation/vite";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 // https://vite.dev/config/
-export default defineConfig({
+export default defineConfig(({ mode }) => ({
+  base: mode === "production" ? process.env.VITE_BASE_URL || "/" : "/",
   plugins: [
     react(),
     tailwindcss(),
@@ -38,12 +39,14 @@ export default defineConfig({
     }),
   ],
   build: {
+    modulePreload: false,
     target: "esnext",
-    cssCodeSplit: true,
+    minify: false,
+    cssCodeSplit: false,
   },
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
     },
   },
-});
+}));
