@@ -1,5 +1,5 @@
 import { type ReactNode } from "react";
-import type { User } from "@/modules/users/types/users";
+import type { UserTableData } from "@/modules/users/types/users";
 
 type UserColumnId =
   | "userInfo"
@@ -18,7 +18,7 @@ interface UserColumn {
   id: UserColumnId;
   header: string;
   className?: string;
-  cell: (user: User) => ReactNode;
+  cell: (user: UserTableData) => ReactNode;
 }
 
 export const USER_COLUMNS: UserColumn[] = [

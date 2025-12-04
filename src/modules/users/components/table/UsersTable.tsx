@@ -1,11 +1,11 @@
-import type { UsersReponse } from "@/modules/users/types/users";
+import type { UserTableData } from "@/modules/users/types/users";
 import { TableFilters } from "@/modules/users/components/filters/TableFilters";
 import { Pagination } from "@/modules/users/components/pagination/Pagination";
 import { TableHead } from "@/modules/users/components/table/TableHead";
 import { UserTableContent } from "@/modules/users/components/table/UserTableContent";
 
 interface UsersTableProps {
-  users: UsersReponse["users"];
+  users: UserTableData[];
   page: number;
   totalPages: number;
   hasNextPage: boolean;

@@ -1,8 +1,8 @@
-import type { User } from "@/modules/users/types/users";
+import type { UserTableData } from "@/modules/users/types/users";
 import { USER_COLUMNS } from "@/modules/users/constants/UserColumns";
 
 interface UserRowProps {
-  user: User;
+  user: UserTableData;
 }
 
 export function UserRow({ user }: UserRowProps) {

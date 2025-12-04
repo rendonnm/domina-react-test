@@ -1,9 +1,9 @@
-import type { UsersReponse } from "@/modules/users/types/users";
+import type { UserTableData } from "@/modules/users/types/users";
 import { USER_COLUMNS } from "@/modules/users/constants/UserColumns";
 import { UserRow } from "@/modules/users/components/table/UserRow";
 
 interface UserTableContentProps {
-  users: UsersReponse["users"];
+  users: UserTableData[];
   isLoading: boolean;
   isError: boolean;
 }
