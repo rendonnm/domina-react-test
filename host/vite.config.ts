@@ -3,6 +3,8 @@ import react from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
 import { federation } from "@module-federation/vite";
 
+const remoteUrl = process.env.VITE_REMOTE_URL || "http://localhost:5001";
+
 export default defineConfig({
   plugins: [
     react(),
@@ -13,7 +15,7 @@ export default defineConfig({
         remote: {
           type: "module",
           name: "remote",
-          entry: "http://localhost:5001/remoteEntry.js",
+          entry: `${remoteUrl}/remoteEntry.js`,
         },
       },
       shared: {
