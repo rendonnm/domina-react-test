@@ -11,6 +11,7 @@ export function PaginationSquare({
   return (
     <button
       className={`size-9 cursor-pointer hover:opacity-50 ${isActive ? "bg-[#1722FF] text-white rounded-xl shadow-md" : ""}`}
+      aria-current={isActive ? "page" : undefined}
       onClick={onClick}
     >
       {children}

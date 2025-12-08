@@ -22,23 +22,28 @@ export function Pagination({
 }: PaginationProps) {
   return (
     <footer className="flex justify-between">
-      <PaginationSquares
-        page={page}
-        totalPages={totalPages}
-        handlePage={handlePage}
-      />
-      <section className="flex gap-5">
-        <PaginationButton
-          onClick={goToPreviousPage}
-          disabled={!hasPreviousPage}
-        >
-          Anterior
-        </PaginationButton>
+      <nav
+        aria-label="Paginación de usuarios"
+        className="flex justify-between w-full"
+      >
+        <PaginationSquares
+          page={page}
+          totalPages={totalPages}
+          handlePage={handlePage}
+        />
+        <section className="flex gap-5">
+          <PaginationButton
+            onClick={goToPreviousPage}
+            disabled={!hasPreviousPage}
+          >
+            Anterior
+          </PaginationButton>
 
-        <PaginationButton onClick={goToNextPage} disabled={!hasNextPage}>
-          Siguiente
-        </PaginationButton>
-      </section>
+          <PaginationButton onClick={goToNextPage} disabled={!hasNextPage}>
+            Siguiente
+          </PaginationButton>
+        </section>
+      </nav>
     </footer>
   );
 }
