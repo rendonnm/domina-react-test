@@ -19,6 +19,11 @@ export async function getUsers(
   }
 
   const res = await fetch(initialUrl);
+
+  if (!res.ok) {
+    throw new Error(`Error ${res.status}: ${res.statusText}`);
+  }
+
   const data = await res.json();
   return data;
 }
