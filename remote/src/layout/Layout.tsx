@@ -13,7 +13,7 @@ export function Layout() {
             >
               <img
                 src="/domina-logo-light.webp"
-                alt="Logo de la empresa Domina Entrega Total"
+                alt=""
                 aria-hidden="true"
                 className="h-10 object-contain"
               />
