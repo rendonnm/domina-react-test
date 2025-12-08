@@ -22,11 +22,11 @@ export function UsersMainPage() {
   } = useUsers();
 
   if (isLoading) {
-    <p>Cargando...!</p>;
+    return <p>Cargando...!</p>;
   }
 
   if (isError) {
-    <p>Se ha presentado un error. Por favor provar nuevamente</p>;
+    return <p>Se ha presentado un error. Por favor probar nuevamente</p>;
   }
 
   return (
